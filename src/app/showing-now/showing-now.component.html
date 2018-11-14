@@ -1,23 +1,41 @@
 <div class="container-fluid px-0 ">
-  <div class="row my-4" >
-    <div class="col-md-6">
-        <select class="custom-select" multiple size="1" >
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+  <div class="row my-4 ">
+    <div class="col-md-2 text-light">
+      <!-- <h2>Filters</h2> -->
+      <h5 class=" strong">Rating</h5>
+      
+      <select class="custom-select bg-transparent text-white">
+          <option value="0">0</option>
+          <option value="0.5">0.5</option>
+          <option value="1">1</option>
+          <option value="1.5">1.5</option>
+          <option value="2">2</option>
+          <option value="2.5">2.5</option>
+          <option value="3" selected>3</option>
+          <option value="3.5">3.5</option>
+          <option value="4">4</option>
+          <option value="4.5">4.5</option>
+          <option value="5">5</option>
+          <option value="5.5">5.5</option>
+          <option value="6">6</option>
+          <option value="6.5">6.5</option>
+          <option value="7">7</option>
+          <option value="7.5">7.5</option>
+          <option value="8">8</option>
+          <option value="8.5">8.5</option>
+          <option value="9">9</option>
+          <option value="9.5">9.5</option>
+          <option value="10">10</option>
         </select>
+
+      <h5 class="pt-4 strong">Genres</h5>
+        <div class=" form-check" *ngFor="let genre of genres">
+          <input type="checkbox" class="form-check-input" name="{{genre.name}}" id="{{genre.name}}">
+          <label class="form-check-label" for="exampleCheck1">{{genre.name}}</label>
+        </div>
+
     </div>
-    <div class="col-md-6">
-        <select class="custom-select" >
-            <option selected>Open this select menu</option>
-            <option value="asc">Asc</option>
-            <option value="desc">Desc</option>
-          </select>
-    </div>
-  </div>
-  <div class="row no-gutters ">
-    <div class="col-md-12 ">
+    <div class="col-md-10 ">
       <div class="card-columns">
         <div class="card" *ngFor="let movie of movies">
           <img class="card-img-top" src="{{imagePath}}{{movie.backdrop_path}}" alt="image">
@@ -30,7 +48,6 @@
             </p>
           </div>
         </div>
-
       </div>
     </div>
   </div>

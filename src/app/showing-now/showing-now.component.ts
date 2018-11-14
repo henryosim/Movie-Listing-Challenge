@@ -11,18 +11,29 @@ import { HttpClient } from '@angular/common/http';
 export class ShowingNowComponent implements OnInit {
 
   public movies: any;
+  public genres: any;
+  public ratings: Array<object> = [];
   public imagePath: string;
   constructor(private movieService: MovieService) {
     this.imagePath = this.movieService.imageURL;
   }
 
   ngOnInit() {
-    // alert(1);
 
     this.movieService.GetNowPlaying().subscribe(res => {
       this.movies = res['results'];
+      this.movies.forEach(movie => {
+        this.ratings.push(movie.vote_average);
+      });
       console.log(this.movies);
+      console.log(this.ratings);
     });
+
+    this.movieService.GetGenres().subscribe(res => {
+      this.genres = res['genres'];
+      console.log(this.genres);
+    });
+
   }
 
 
