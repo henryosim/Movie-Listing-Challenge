@@ -1,0 +1,37 @@
+<div class="container-fluid px-0 ">
+  <div class="row my-4" >
+    <div class="col-md-6">
+        <select class="custom-select" multiple size="1" >
+            <option selected>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+        </select>
+    </div>
+    <div class="col-md-6">
+        <select class="custom-select" >
+            <option selected>Open this select menu</option>
+            <option value="asc">Asc</option>
+            <option value="desc">Desc</option>
+          </select>
+    </div>
+  </div>
+  <div class="row no-gutters ">
+    <div class="col-md-12 ">
+      <div class="card-columns">
+        <div class="card" *ngFor="let movie of movies">
+          <img class="card-img-top" src="{{imagePath}}{{movie.backdrop_path}}" alt="image">
+          <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <p class="card-text">{{movie.overview}}</p>
+            <p class="card-text">
+              <small class="text-muted">Vote Average: {{movie.vote_average}} | Vote Count: {{movie.vote_count}}</small><br>
+              <small class="text-muted">Release Date: {{movie.release_date}} </small>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
