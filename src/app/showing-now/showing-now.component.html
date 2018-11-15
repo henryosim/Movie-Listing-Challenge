@@ -25,6 +25,7 @@
             <p class="card-text">{{movie.overview}}</p>
             <p class="card-text">
               <small class="text-muted">Avg. Vote: {{movie.vote_average}} | Votes: {{movie.vote_count}}</small><br>
+              <small class="text-muted">Popularity: <strong>{{movie.popularity}}</strong></small><br>
               <small class="text-muted" >Genre: <strong *ngFor="let gName of movie.genreNames; let isLast = last">{{gName}} {{ isLast ? '': ' | '}} </strong> </small>
             </p>
           </div>
