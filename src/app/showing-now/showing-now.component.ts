@@ -1,6 +1,7 @@
 import { log, isArray } from 'util';
 import { MovieService } from './../shared/movie.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -48,11 +49,10 @@ export class ShowingNowComponent implements OnInit {
       this.filterMovies();
     });
 
-    // create array of rating values from 0-10 with increment of -.5
+    // create array of rating values from 0-10 with increment of 0.5
     for (let index = this.rateFilterMinVal; index <= this.rateFilterMaxVal; index += 0.5) {
       this.rateFilterOptions.push(index);
     }
-
 
   }
 
@@ -69,14 +69,16 @@ export class ShowingNowComponent implements OnInit {
       movie['genreNames'] = [];
       movie['genre_ids'].forEach(genreID => {
 
-        if (movie['vote_average'] >= this.defaultRateFilter && this.selectedGenreIDs.indexOf(genreID) >= 0) {
+        if (this.selectedGenreIDs.indexOf(genreID) >= 0) {
           const genreName = this.getGenreName(genreID);
           movie['genreNames'].push(genreName);
         }
-
       });
 
-      this.movies.push(movie); // adds movies to the Movie array.
+      if (movie['vote_average'] >= this.defaultRateFilter) {
+        this.movies.push(movie); // adds movies to the Movie array.
+
+      }
 
     });
 
