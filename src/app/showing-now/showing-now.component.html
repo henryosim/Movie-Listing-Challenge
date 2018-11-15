@@ -3,36 +3,17 @@
     <div class="col-md-2 text-light">
       <!-- <h2>Filters</h2> -->
       <h5 class=" strong">Rating</h5>
-      
-      <select class="custom-select bg-transparent text-white">
-          <option value="0">0</option>
-          <option value="0.5">0.5</option>
-          <option value="1">1</option>
-          <option value="1.5">1.5</option>
-          <option value="2">2</option>
-          <option value="2.5">2.5</option>
-          <option value="3" selected>3</option>
-          <option value="3.5">3.5</option>
-          <option value="4">4</option>
-          <option value="4.5">4.5</option>
-          <option value="5">5</option>
-          <option value="5.5">5.5</option>
-          <option value="6">6</option>
-          <option value="6.5">6.5</option>
-          <option value="7">7</option>
-          <option value="7.5">7.5</option>
-          <option value="8">8</option>
-          <option value="8.5">8.5</option>
-          <option value="9">9</option>
-          <option value="9.5">9.5</option>
-          <option value="10">10</option>
-        </select>
+
+      <select class="custom-select bg-transparent text-white" [(ngModel)]="defaultRateFilter" (change)=filterMovies()>
+        <option value="{{option}}" *ngFor="let option of rateFilterOptions">{{option}}</option>
+      </select>
 
       <h5 class="pt-4 strong">Genres</h5>
-        <div class=" form-check" *ngFor="let genre of genres">
-          <input type="checkbox" class="form-check-input" name="{{genre.name}}" id="{{genre.name}}">
-          <label class="form-check-label" for="exampleCheck1">{{genre.name}}</label>
-        </div>
+      <div class=" form-check" *ngFor="let genre of genres">
+        <input type="checkbox" class="form-check-input" [(ngModel)]="genre.selected" (change)=filterMovies() name="{{genre.name}}"
+          id="{{genre.name}}">
+        <label class="form-check-label" for="{{genre.name}}">{{genre.name}}</label>
+      </div>
 
     </div>
     <div class="col-md-10 ">
@@ -43,8 +24,8 @@
             <h5 class="card-title">{{movie.title}}</h5>
             <p class="card-text">{{movie.overview}}</p>
             <p class="card-text">
-              <small class="text-muted">Vote Average: {{movie.vote_average}} | Vote Count: {{movie.vote_count}}</small><br>
-              <small class="text-muted">Release Date: {{movie.release_date}} </small>
+              <small class="text-muted">Avg. Vote: {{movie.vote_average}} | Votes: {{movie.vote_count}}</small><br>
+              <small class="text-muted" >Genre: <strong *ngFor="let gName of movie.genreNames; let isLast = last">{{gName}} {{ isLast ? '': ' | '}} </strong> </small>
             </p>
           </div>
         </div>

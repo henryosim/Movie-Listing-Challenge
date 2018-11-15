@@ -14,7 +14,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   public GetNowPlaying() {
-    return this.http.get(this.nowPlayingURL + '?page=1&language=en-US&api_key=' + this.apiKey);
+    return this.http.get(this.nowPlayingURL + '?language=en-US&api_key=' + this.apiKey);
   }
 
   public GetGenres() {
