@@ -84,7 +84,6 @@ export class ShowingNowComponent implements OnInit {
 
     });
 
-
     this.movies.sort(this.compare); // sort movies that will be displayed
   }
 
