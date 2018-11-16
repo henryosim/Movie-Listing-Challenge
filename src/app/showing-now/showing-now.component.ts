@@ -66,19 +66,21 @@ export class ShowingNowComponent implements OnInit {
     this.setselectedGenreIDs();
 
     this.loadedMovies.forEach(movie => {
+      let tracker = false;
       movie['genreNames'] = [];
       movie['genre_ids'].forEach(genreID => {
 
         if (this.selectedGenreIDs.indexOf(genreID) >= 0) {
           const genreName = this.getGenreName(genreID);
           movie['genreNames'].push(genreName);
+          tracker = true;
         }
       });
 
-      if (movie['vote_average'] >= this.defaultRateFilter) {
+      if (movie['vote_average'] >= this.defaultRateFilter && tracker) {
         this.movies.push(movie); // adds movies to the Movie array.
-
       }
+      tracker = false;
 
     });
 
